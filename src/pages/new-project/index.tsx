@@ -5,7 +5,7 @@ import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import type { AllRoles_TP, UserRole_TP, worksite_TP, Project_TP } from "../../Types";
-import { Coordinates } from "../../Types";
+import { Coordinates_TP } from "../../Types";
 import { GlobalContext } from "../../context/GlobalContext";
 import SectionHeader from '../../components/atoms/SectionHeader'
 import FileUpload from "../../components/templates/new-project/FileUpload";
@@ -27,7 +27,7 @@ export default function NewProject() {
     const [ItemFile, setItemFile] = useState<File | null>(null);
     const [prosecution, setProsecution] = useState<string>('');
     const [sectorPresidency, setSectorPresidency] = useState<string>('');
-    const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
+    const [coordinates, setCoordinates] = useState<Coordinates_TP | null>(null);
     const [, setSector] = useState<string>('');
 
 

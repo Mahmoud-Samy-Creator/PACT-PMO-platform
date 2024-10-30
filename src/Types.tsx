@@ -136,19 +136,11 @@ export type MainProgress_TP = {
     progress: string
 }
 
-
 // =========== Maps ===========
 export type Coordinates_TP = {
     lat: number;
     lng: number;
 }
-export interface Coordinates {
-    lat: number;
-    lng: number;
-    coordinates: Coordinates_TP | null;
-    setCoordinates: React.Dispatch<React.SetStateAction<Coordinates_TP | null>>;
-}
-
 // =========== others ===========
 // Type for individual option in dropdowns
 export interface Option {

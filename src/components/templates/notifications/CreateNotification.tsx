@@ -2,7 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 // import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import {  FaPen, FaPlus } from "react-icons/fa6";
+// import {  FaPen, FaPlus } from "react-icons/fa6";
+import {  FaPen } from "react-icons/fa6";
 
 const style = {
     position: 'absolute',
@@ -17,7 +18,7 @@ const style = {
 
 export default function CreateNotification() {
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
+    // const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (

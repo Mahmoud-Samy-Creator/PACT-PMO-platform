@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 // import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import {  FaPen, FaPlus } from "react-icons/fa6";
-import FileUpload from '../new-project/FileUpload';
+// import FileUpload from '../new-project/FileUpload';
 
 const style = {
     position: 'absolute',
@@ -40,7 +40,7 @@ export default function CreateDocuments() {
                                 <FaPen className="input-text-icon"/>
                             </div>
                         </div>
-                        <FileUpload />
+                        {/* <FileUpload /> */}
                         <div className="action-buttons-container">
                             <button onClick={handleClose} className='action-button'>Cancel</button>
                             <button type='submit' className='action-button'>Confirm</button>

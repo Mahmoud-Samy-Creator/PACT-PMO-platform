@@ -10,7 +10,7 @@ import { Project_TP } from "../../Types";
 import useUserInfo from '../../context/Hooks/userInfoOnLogin';
 
 export default function Projects() {
-    const { data: userInfo, isLoading, error } = useUserInfo();
+    const { isLoading, error } = useUserInfo();
 
     const { allProjects, setAllProjects } = useContext(GlobalContext) as { allProjects: Project_TP[], setAllProjects: React.Dispatch<React.SetStateAction<Project_TP[]>> };
     const userInfoData = JSON.parse(localStorage.getItem('userInfo') || '{}');

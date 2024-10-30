@@ -3,6 +3,8 @@ import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from 'react-lea
 import L, { LatLngExpression } from 'leaflet';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
 
+import type { Coordinates_TP } from '../../../Types';
+
 // Extend L.Control to include geocoder
 declare module 'leaflet' {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -13,7 +15,6 @@ declare module 'leaflet' {
 import 'leaflet-control-geocoder';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.js';
 import 'leaflet/dist/leaflet.css';
-import { Coordinates } from "../../../Types";
 
 
 // =========== Egypt ===========
@@ -45,7 +46,7 @@ function LocationMarker({ onClick }: LocationMarkerProps) {
 // Custom hook for adding the geocoder control
 function AddGeocoder() {
   const map = useMap();
-  
+
   useEffect(() => {
     // Add geocoder to the map
     const geocoder = L.Control.geocoder({
@@ -68,8 +69,7 @@ function AddGeocoder() {
   return null;
 }
 
-
-function GoogleMap({ coordinates, setCoordinates }: Coordinates) {
+function GoogleMap({ coordinates, setCoordinates } : { coordinates: Coordinates_TP | null, setCoordinates: React.Dispatch<React.SetStateAction<Coordinates_TP | null>> }) {
   const handleMapClick = (lat: number, lng: number) => {
     console.log(`Latitude: ${lat}, Longitude: ${lng}`);
     setCoordinates({ lat, lng });

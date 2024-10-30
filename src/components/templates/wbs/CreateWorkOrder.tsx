@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 // import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import {  FaPen, FaPlus } from "react-icons/fa6";
-import FileUpload from '../new-project/FileUpload';
+// import FileUpload from '../new-project/FileUpload';
 
 const style = {
     position: 'absolute',
@@ -66,8 +66,8 @@ export default function CreateWorkOrder() {
                             </div>
                         </div>
                         <div className='flex flex-col lg:flex-row gap-5 items-center justify-between'>
-                            <FileUpload />
-                            <FileUpload />
+                            {/* <FileUpload /> */}
+                            {/* <FileUpload /> */}
                         </div>
                         <div className="action-buttons-container">
                             <button onClick={handleClose} className='action-button'>Cancel</button>
