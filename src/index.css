@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /* Forms */
+    .form-container-modal {
+        @apply rounded-xl px-5  py-5 lg:px-10 bg-white shadow flex flex-col gap-3 min-w-72 lg:min-w-96
+    }
+    .input-container {
+        @apply flex flex-col gap-1 w-full
+    }
+    .input-label {
+        @apply font-medium text-sm text-brandColor
+    }
+    .input {
+        @apply w-full min-h-10 py-2 px-3 border border-mainBorder outline-none shadow text-xs text-primaryColor
+    }
+    .input-text-icon {
+        @apply text-primaryColor absolute top-1/2 -translate-y-1/2 right-3 text-sm
+    }
+    .action-button {
+        @apply h-12 rounded-lg flex justify-center items-center bg-brandColor w-full text-white
+    }
+    .add-button {
+        @apply flex justify-center items-center size-5 text-xs text-white bg-black rounded-md
+    }
+    .action-buttons-container {
+        @apply flex gap-3 mt-3
+    }
+    
+}
+
+body{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.navbar a.active {
+    color: #09242E !important;
+    font-weight: bold !important;
+    border-bottom: 2px solid #09242E !important;
+}
+
+@media (max-width: 1024px) {
+    .navbar a {
+        width: 100% !important;
+        margin: auto !important;
+        padding: 5px;
+
+    }
+    .navbar a.active {
+        color: #5F6D7E !important;
+        background-color: rgba(111, 131, 156, 0.418) !important;
+        border-bottom: none !important;
+
+    }
+    .navbar a:hover {
+        color: #5F6D7E !important;
+        background-color: rgba(111, 131, 156, 0.418) !important;
+        font-weight: bold !important;
+
+    }
+}
+.statistics .CircularProgressbar .CircularProgressbar-path {
+    stroke: #09242E !important;
+    stroke-linecap: initial !important  ;
+    /* stroke-width:  */
+}
+
+.statistics .CircularProgressbar .CircularProgressbar-text {
+    fill: #474747 !important;
+    /* font-size: 16px; */
+}
+
+.mantine-Drawer-title.m_615af6c9 {
+    font-size: 20px !important;
+}
+
+.m_1b7284a3.mantine-Paper-root {
+    width: 300px !important;
+}
+
+.m_77c9d27d {
+    padding: 0 !important;
+    background: white !important;
+    color: #5F6D7E !important;
+}
+
+
+.css-ihlsro-MuiDataGrid-root .MuiDataGrid-container--top [role=row] {
+    background-color: #f7f7f9 !important;
+}
