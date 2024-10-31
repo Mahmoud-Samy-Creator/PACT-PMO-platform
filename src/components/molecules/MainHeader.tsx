@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import Navbar from "../organisms/Navbar";
 import ShowNotification from "../templates/notifications/ShowNotification";
 import NavbarShow from "../templates/navbar/NavbarShow";
-import { Project_TP } from '../../Types'
+import { Project_TP } from '../../Types';
 
 export default function MainHeader() {
     const {id} = useParams()
@@ -20,7 +20,6 @@ export default function MainHeader() {
         const handleFilter = () => {
             const filter = allProjects.filter((project: Project_TP) => project.id === Number(id));
             setCurrentProject(filter[0]);
-            console.log(filter[0]);
         };
         handleFilter();
     }, [id, allProjects]);

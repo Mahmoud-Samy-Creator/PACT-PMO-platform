@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { GlobalContext } from "../../../context/GlobalContext";
 import { useContext, useEffect, useState } from "react";
 import { Project_TP } from '../../../Types';
+import filterProjects from '../../../pages/Functions/filterProjects';
 
 export default function OverviewDetails() {
     const { allProjects } = useContext(GlobalContext) ?? {};
@@ -10,14 +11,8 @@ export default function OverviewDetails() {
     const {id} = useParams();
 
     useEffect(() => {
-        const handleFilter = () => {
-            const filter = allProjects?.filter((project: Project_TP) => project.id === Number(id));
-            setCurrentProject(filter?.[0] || null);
-            if (filter) {
-                console.log(filter[0]);
-            }
-        };
-        handleFilter();
+        const filteredProject = allProjects && id ? filterProjects(allProjects, id) : null;
+        setCurrentProject(filteredProject);
     }, [id, allProjects]);
 
     if (!currentProject) {

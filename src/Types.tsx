@@ -65,6 +65,13 @@ export type Project_TP = {
     sector: string,
     sector_presidency: string,
     prosecution: string,
+
+    planning_manager: Member_TP | null;
+    operating_manager: Member_TP | null;
+    project_manager: Member_TP | null;
+    mmg: Member_TP | null;
+    contractor: Member_TP | null;
+    inspector: Member_TP | null;
 }
 
 export type SingleProject_TP = {
@@ -125,12 +132,13 @@ export type CurrentProject_TP = {
 }
 
 export type Member_TP = {
-    image: string,
-    name: string,
-    job_description: string,
-    email: string,
-    phone: string,
-}
+    id: string;
+    image: string
+    first_name: string;
+    role: string;
+    email: string;
+    phone: string;
+};
 
 export type MainProgress_TP = {
     progress: string

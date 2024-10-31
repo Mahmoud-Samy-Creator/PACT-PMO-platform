@@ -4,9 +4,9 @@ import MainHeader from "../../components/molecules/MainHeader";
 import GoogleMap from "./GoogleMap";
 
 
-export default function Overview() {
+function Overview() {
     return (
-        <div className=" flex flex-col gap-[15px] border-[2px] flex-1 bg-white border-[#EAEBF0] lg:mr-[10px]   p-[20px] ">
+        <div className=" flex flex-col gap-[15px] border-[2px] flex-1 bg-white border-[#EAEBF0] lg:mr-[10px] p-[20px] ">
             <MainHeader />
             <div className="search-map z-[3]">
                 <GoogleMap />
@@ -16,3 +16,5 @@ export default function Overview() {
         </div>
     )
 }
+
+export default Overview;
