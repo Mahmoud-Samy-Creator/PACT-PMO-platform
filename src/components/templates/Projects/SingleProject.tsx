@@ -1,22 +1,12 @@
 // import { FaEllipsis   } from "react-icons/fa6";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import deleteProjectOrder from './ApiCalls/deleteProjects';
+import DeleteAlertDialog from './DeleteAlertDialog';
 import { GlobalContext } from '../../../context/GlobalContext';
-import type { SingleProject_TP, Project_TP } from '../../../Types';
+import type { SingleProject_TP } from '../../../Types';
 
 
-// Import alert modal from MUI
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-
-export default function SingleProject({id, title, scope, status, progress, contract_no, initiation_start_date, initiation_end_date, deadline }:SingleProject_TP) {
+export default function SingleProject({id, title, scope, status, progress, contract_no, initiation_start_date, initiation_end_date, deadline }: SingleProject_TP) {
     const globalContext = useContext(GlobalContext);
     if (!globalContext) {
         throw new Error("GlobalContext is undefined");
@@ -32,11 +22,8 @@ export default function SingleProject({id, title, scope, status, progress, contr
                 <div className="flex items-center justify-between font-[Jakarta Sans]">
                     <Link to={`/projects/${id}/overview`}>
                         <p className="font-semibold text-[#26252B]">{title}</p>
-                    </Link>
-                    {
-                        status === 'pending' ? <AlertDialog projectId={id} allProjects={allProjects} setAllProjects={setAllProjects}/> : <></>
-                    }
-                    
+                    </Link>                    
+                    <DeleteAlertDialog projectId={id} allProjects={allProjects} setAllProjects={setAllProjects}/>
                 </div>
                 <p className="text-[12px] font-medium text-[#91969B] opacity-70">{scope}</p>
             </div>
@@ -75,45 +62,4 @@ export default function SingleProject({id, title, scope, status, progress, contr
             </div>
         </div>
     )
-}
-
-function AlertDialog({projectId, allProjects, setAllProjects}: {projectId: number, allProjects: Project_TP[], setAllProjects: React.Dispatch<React.SetStateAction<Project_TP[]>>}) {
-    const [open, setOpen] = useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    return (
-    <>
-        <button className="text-[14px] project-tool-tip" onClick={handleClickOpen}>
-            <FontAwesomeIcon icon={faTrashCan} />
-        </button>
-        <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-        >
-        <DialogTitle id="alert-dialog-title">
-            {"Are you sure you want to delete this project?"}
-        </DialogTitle>
-        <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-                This action cannot be undoed. Make sure you want to delete this project.
-            </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-            <Button onClick={handleClose}>Disagree</Button>
-            <Button onClick={() => deleteProjectOrder(projectId, handleClose, allProjects, setAllProjects)} autoFocus>
-                Agree
-            </Button>
-        </DialogActions>
-        </Dialog>
-    </>
-    );
 }

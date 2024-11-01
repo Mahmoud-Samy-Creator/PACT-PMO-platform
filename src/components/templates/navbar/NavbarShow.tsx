@@ -4,7 +4,7 @@ import { FaBars } from "react-icons/fa";
 import Navbar from '../../organisms/Navbar';
 import { useParams } from 'react-router-dom';
 
-export default function NavbarShow() {
+export default function NavbarShow({status, setPending}: {status: boolean, setPending: React.Dispatch<React.SetStateAction<boolean>>}) {
     const [opened, { open, close }] = useDisclosure(false);
     const {id} = useParams()
 
@@ -19,7 +19,7 @@ export default function NavbarShow() {
             id='notification-drawer'
             // position='right'
             >
-                <Navbar nav_id={id} className='flex-col items-center border-none w-full' />
+                <Navbar nav_id={id} status={status} setStatus={setPending} className='flex-col items-center border-none w-full' />
             </Drawer>
             
             <Button onClick={open}>

@@ -39,7 +39,7 @@ export default function MainHeader() {
                 </div>
                 <div className="flex items-center gap-[10px]">
                     <ShowNotification />
-                    <NavbarShow />
+                    <NavbarShow status={pending} setPending={setPending}/>
                 </div>
             </div>
             <Navbar className="hidden lg:flex" nav_id={id} status={pending} setStatus={setPending}/>

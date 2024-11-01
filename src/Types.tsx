@@ -145,6 +145,17 @@ export type MainProgress_TP = {
     progress: string
 }
 
+export type ProjectDelete_TP = {
+    id: number,
+    allProjects: Project_TP[],
+    setAllProjects: React.Dispatch<React.SetStateAction<Project_TP[]>>
+    handleCloseModal: () => void
+}
+export type ProjectDeleteModal_TP = {
+    projectId: number,
+    allProjects: Project_TP[],
+    setAllProjects: React.Dispatch<React.SetStateAction<Project_TP[]>>
+}
 // =========== Maps ===========
 export type Coordinates_TP = {
     lat: number;

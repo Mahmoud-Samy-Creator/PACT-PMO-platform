@@ -41,7 +41,9 @@ export default function Navbar({ nav_id, className, status, setStatus }: Navbar_
             <span
                 className="block bg-[black] text-[white] h-[fit-content] px-[15px] py-[3px] rounded-[5px] cursor-pointer lg:absolute lg:right-0"
                 onClick={() => { if (id) pendingToProgress(id) }}
-            >Make in progress</span>
+            >
+                Make in progress
+            </span>
         );
     }
 
