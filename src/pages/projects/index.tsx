@@ -21,6 +21,8 @@ export default function Projects() {
     if (error) {
         return <p>Error loading user information.</p>;
     }
+
+    console.log(allProjects)
     return (
         <div className="flex flex-col gap-[15px] border-[2px] flex-1 bg-white border-[#EAEBF0] xl:mr-[10px] p-[20px]">
             <div className="flex justify-between">

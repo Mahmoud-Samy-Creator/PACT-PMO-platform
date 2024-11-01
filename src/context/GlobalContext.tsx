@@ -24,7 +24,7 @@ export const GlobalProvider = ({ children }: {children: React.ReactNode}) => {
     const getWorksitesTypes = async () => (await axios.get(`${API_BASE_URL}/v1/portal/worksite_types/`)).data.results;
 
     // ================= Get Existing Projects =================
-    const getExistingProjects = async () => (await axios.get(`${API_BASE_URL}/v1/worksites/worksite/?page=1&size=5`)).data;
+    const getExistingProjects = async () => (await axios.get(`${API_BASE_URL}/v1/worksites/worksite/?page=1&size=10`)).data;
 
     // ================= Get Users List =================
     const getUsersList = async () => {

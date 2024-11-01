@@ -13,6 +13,7 @@ export default function OverviewDetails() {
     useEffect(() => {
         const filteredProject = allProjects && id ? filterProjects(allProjects, id) : null;
         setCurrentProject(filteredProject);
+        console.log(filteredProject);
     }, [id, allProjects]);
 
     if (!currentProject) {
@@ -29,9 +30,9 @@ export default function OverviewDetails() {
                 <p className="text-[13px] text-[#667085]">Sector Presidency: {currentProject?.sector_presidency}</p>
                 <p className="text-[13px] text-[#667085]">prosecution: {currentProject?.prosecution}</p>
                 <p className="text-[13px] text-[#667085]">Scope Of Work: {currentProject?.scope}</p>
-                <p className="text-[12px] text-[#09242E] font-medium max-w-[300px] leading-[16px]">
-                pact. is a management system designed to help teams collaborate & manage their projects with ease. It offers powerful features such as task tracking, project organization, scheduling, & communication tools to keep teams organized.
-                </p>
+                {/* <p className="text-[12px] text-[#09242E] font-medium max-w-[300px] leading-[16px]">
+                    pact. is a management system designed to help teams collaborate & manage their projects with ease. It offers powerful features such as task tracking, project organization, scheduling, & communication tools to keep teams organized.
+                </p> */}
             </div>
             <div className="flex flex-col sm:flex-row gap-[20px]">
                 <div className="flex  min-w-[120px] flex-col gap-[20px]">
@@ -48,15 +49,15 @@ export default function OverviewDetails() {
                 <div className="bg-[#FAFAFA] min-w-[120px] p-[10px] rounded-[8px] flex flex-col gap-[5px] max-h-fit">
                     <div>
                         <p className="text-[12px] text-[#667085]">Start Date</p>
-                        <h3 className="font-semibold text-[14px] text-[#09242E]">03/05/2020</h3>
+                        <h3 className="font-semibold text-[14px] text-[#09242E]">{new Date(currentProject?.initiation_start_date).toLocaleDateString('en-GB')}</h3>
                     </div>
                     <div>
                         <p className="text-[12px] text-[#667085]">End Date</p>
-                        <h3 className="font-semibold text-[14px] text-[#09242E]">03/05/2020</h3>
+                        <h3 className="font-semibold text-[14px] text-[#09242E]">{new Date(currentProject?.initiation_end_date).toLocaleDateString('en-GB')}</h3>
                     </div>
                     <div>
                         <p className="text-[12px] text-[#667085]">Deadline</p>
-                        <h3 className="font-semibold text-[14px] text-[#09242E]">Within 10 Months</h3>
+                        <h3 className="font-semibold text-[14px] text-[#09242E]">{currentProject?.deadline?.replace(" 00:00:00", "")} Days</h3>
                     </div>
                     <div>
                         <p className="text-[12px] text-[#667085]">Actual Deadline</p>

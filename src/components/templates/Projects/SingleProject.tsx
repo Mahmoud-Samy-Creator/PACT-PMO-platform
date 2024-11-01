@@ -32,8 +32,11 @@ export default function SingleProject({id, title, scope, status, progress, contr
                 <div className="flex items-center justify-between font-[Jakarta Sans]">
                     <Link to={`/projects/${id}/overview`}>
                         <p className="font-semibold text-[#26252B]">{title}</p>
-                    </Link>                    
-                    <AlertDialog projectId={id} allProjects={allProjects} setAllProjects={setAllProjects}/>
+                    </Link>
+                    {
+                        status === 'pending' ? <AlertDialog projectId={id} allProjects={allProjects} setAllProjects={setAllProjects}/> : <></>
+                    }
+                    
                 </div>
                 <p className="text-[12px] font-medium text-[#91969B] opacity-70">{scope}</p>
             </div>
@@ -87,10 +90,7 @@ function AlertDialog({projectId, allProjects, setAllProjects}: {projectId: numbe
 
     return (
     <>
-        <button
-            className="text-[14px] project-tool-tip"
-            onClick={handleClickOpen}
-        >
+        <button className="text-[14px] project-tool-tip" onClick={handleClickOpen}>
             <FontAwesomeIcon icon={faTrashCan} />
         </button>
         <Dialog

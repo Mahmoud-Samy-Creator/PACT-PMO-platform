@@ -6,22 +6,28 @@ import Navbar from "../organisms/Navbar";
 import ShowNotification from "../templates/notifications/ShowNotification";
 import NavbarShow from "../templates/navbar/NavbarShow";
 import { Project_TP } from '../../Types';
+import filterProjects from '../../pages/Functions/filterProjects';
 
 export default function MainHeader() {
     const {id} = useParams()
-
     const context = useContext(GlobalContext);
     if (!context) {
         throw new Error("GlobalContext must be used within a GlobalProvider");
     }
     const { allProjects } = context;
-    const [currentProject, setCurrentProject] = useState<Project_TP | null>(null)
+
+    const [pending, setPending] = useState<boolean>(true);
+    const [currentProject, setCurrentProject] = useState<Project_TP | null>(null);
+
     useEffect(() => {
-        const handleFilter = () => {
-            const filter = allProjects.filter((project: Project_TP) => project.id === Number(id));
-            setCurrentProject(filter[0]);
-        };
-        handleFilter();
+        const filteredProject = allProjects && id ? filterProjects(allProjects, id) : null;
+        if (filteredProject?.status === 'pending') {
+            setPending(true);
+        } else {
+            setPending(false);
+        }
+        setCurrentProject(filteredProject);
+
     }, [id, allProjects]);
 
     return (
@@ -36,7 +42,7 @@ export default function MainHeader() {
                     <NavbarShow />
                 </div>
             </div>
-            <Navbar  className="hidden lg:flex" nav_id={id} />
+            <Navbar className="hidden lg:flex" nav_id={id} status={pending} setStatus={setPending}/>
         </div>
     )
 }

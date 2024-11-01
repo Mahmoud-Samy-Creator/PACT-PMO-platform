@@ -60,12 +60,13 @@ export type Project_TP = {
     contract_no: string,
     initiation_start_date: string,
     initiation_end_date: string,
+    actual_start_date: string,
+    actual_end_date: string,
     deadline: string,
     worksite_type: worksite_TP,
     sector: string,
     sector_presidency: string,
     prosecution: string,
-
     planning_manager: Member_TP | null;
     operating_manager: Member_TP | null;
     project_manager: Member_TP | null;
@@ -164,4 +165,11 @@ export interface SectorPresidencyMap {
 // Type for Sector based on Sector Presidency
 export interface SectorMap {
     [key: string]: Option[];
+}
+// Type of navBar
+export type Navbar_TP = {
+    nav_id ?: string ,
+    className?: string,
+    status: boolean
+    setStatus: React.Dispatch<React.SetStateAction<boolean>>
 }

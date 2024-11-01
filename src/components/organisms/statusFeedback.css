@@ -1,0 +1,7 @@
+.addInProgressAlert {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+.addInProgressAlert.fade-out {
+  opacity: 0;
+}
