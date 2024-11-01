@@ -161,6 +161,17 @@ export type Coordinates_TP = {
     lat: number;
     lng: number;
 }
+
+// =========== tables ===========
+export interface ServiceRow {
+    id: number;
+    serviceCode: string;
+    description: string;
+    progress: string;
+    quantity: number;
+    unit: string;
+    unitCost: number;
+}
 // =========== others ===========
 // Type for individual option in dropdowns
 export interface Option {
