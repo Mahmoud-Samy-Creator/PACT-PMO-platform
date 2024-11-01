@@ -6,13 +6,13 @@ import SingleProject from "../../components/templates/Projects/SingleProject";
 import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import ShowNotification from "../../components/templates/notifications/ShowNotification";
-import { Project_TP } from "../../Types";
+import { Project_TP, GlobalContextType } from "../../Types";
 import useUserInfo from '../../context/Hooks/userInfoOnLogin';
 
 export default function Projects() {
     const { isLoading, error } = useUserInfo();
 
-    const { allProjects, setAllProjects } = useContext(GlobalContext) as { allProjects: Project_TP[], setAllProjects: React.Dispatch<React.SetStateAction<Project_TP[]>> };
+    const { allProjects, setAllProjects } = useContext(GlobalContext) as GlobalContextType;
     const userInfoData = JSON.parse(localStorage.getItem('userInfo') || '{}');
     if (isLoading) {
         return <></>;
@@ -40,9 +40,9 @@ export default function Projects() {
                     <span className="text-[18px]"><FaThLarge/></span>
                     <p className="text-[14px]">Projects</p>
                 </div>
-                {/* <Link to='' className="text-[#478FB4] text-[12px] font-semibold underline">Details</Link> */}
             </div>
-            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-[15px]">
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-[15px] relative">
+                { allProjects?.length === 0 && <NoWorksitesIndecation /> }
                 {
                     allProjects?.map((project:Project_TP) => 
                         <SingleProject
@@ -62,4 +62,13 @@ export default function Projects() {
             </div>
         </div>
     )
+}
+
+// An indecation when there is no Worksites
+function NoWorksitesIndecation() {
+    return (
+        <div className="no-projects bg-[#1565c0] py-[25px] px-[10px] text-white sm:w-[90%] md:w-[40%] text-center font-bold absolute left-[50%] top-[50%] translate-x-[-50%] rounded-[10px] border border-[dashed] border-white border-[5px]">
+            No Projects yet.
+        </div>
+    );
 }

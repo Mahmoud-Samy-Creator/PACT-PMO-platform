@@ -1,4 +1,3 @@
-// import { FaEllipsis   } from "react-icons/fa6";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import DeleteAlertDialog from './DeleteAlertDialog';
@@ -22,7 +21,7 @@ export default function SingleProject({id, title, scope, status, progress, contr
                 <div className="flex items-center justify-between font-[Jakarta Sans]">
                     <Link to={`/projects/${id}/overview`}>
                         <p className="font-semibold text-[#26252B]">{title}</p>
-                    </Link>                    
+                    </Link>  
                     <DeleteAlertDialog projectId={id} allProjects={allProjects} setAllProjects={setAllProjects}/>
                 </div>
                 <p className="text-[12px] font-medium text-[#91969B] opacity-70">{scope}</p>
@@ -32,18 +31,9 @@ export default function SingleProject({id, title, scope, status, progress, contr
                 <p>{contract_no}</p>
             </div>
             <div className="grid grid-cols-3 gap-[5px]">
-                <div className="flex flex-col">
-                    <p className="text-[#4A4646] font-bold text-[13px]">Start</p>
-                    <p className="text-[#91969B] text-[10px]">{formattedStartDate}</p>
-                </div>
-                <div className="flex flex-col">
-                    <p className="text-[#4A4646] font-bold text-[13px]">End</p>
-                    <p className="text-[#91969B] text-[10px]">{formattedEndDate}</p>
-                </div>
-                <div className="flex flex-col">
-                    <p className="text-[#4A4646] font-bold text-[13px]">Deadline</p>
-                    <p className="text-[#91969B] text-[10px]">{formattedDeadline} days</p>
-                </div>
+                <DateInfo label="Start" content={formattedStartDate}/>
+                <DateInfo label="End" content={formattedEndDate}/>
+                <DateInfo label="Deadline" content={formattedDeadline}/>
             </div>
             <div className="flex items-center gap-[20px]">
                 <div className="progress w-[60%] flex flex-col gap-[5px]">
@@ -61,5 +51,14 @@ export default function SingleProject({id, title, scope, status, progress, contr
                 </div>
             </div>
         </div>
+    )
+}
+
+function DateInfo({content, label} : {content:string, label:string}) {
+    return (
+        <div className="flex flex-col">
+        <p className="text-[#4A4646] font-bold text-[13px]">{label}</p>
+        <p className="text-[#91969B] text-[10px]">{content}</p>
+    </div>
     )
 }
