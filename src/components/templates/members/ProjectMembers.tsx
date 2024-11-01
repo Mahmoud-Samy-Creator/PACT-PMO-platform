@@ -7,7 +7,6 @@ import { Project_TP, Member_TP } from '../../../Types';
 import filterProjects from '../../../pages/Functions/filterProjects';
 
 
-
 export default function ProjectMembers() {
     const {id} = useParams()
     const context = useContext(GlobalContext);
@@ -26,7 +25,6 @@ export default function ProjectMembers() {
             console.log(selectedRolesArray);
     }, [ id, allProjects ]);
 
-    
     return (
         <div className="grid sm:grid-cols-2 gap-[20px]">
             {
